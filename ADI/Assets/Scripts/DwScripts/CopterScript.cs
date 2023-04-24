@@ -20,14 +20,16 @@ public class CopterScript : MonoBehaviour
 	//PID регуляторы, которые будут стабилизировать углы
 	//каждому углу свой регулятор, класс PID определен ниже
 	//константы подобраны на глаз :) пробуйте свои значения
-	private PID pitchPID = new PID(100, 0, 20);
+	private PID pitchPID = new PID(-100, 0, -20);
 	private PID rollPID = new PID(100, 0, 20);
-	private PID yawPID = new PID(50, 0, 50);
+	private PID yawPID = new PID(-50, 0, -50);
 
 	public GameObject motor;
 	public GameObject motor1;
 	public GameObject motor2;
 	public GameObject motor3;
+
+	public GameObject frame;
 
 	void readRotation()
 	{
@@ -36,7 +38,7 @@ public class CopterScript : MonoBehaviour
 		//в реальном квадрокоптере эти данные необходимо получать
 		//из акселерометра-гироскопа-магнетометра, так же как делает это ваш
 		//смартфон
-		Vector3 rot = GameObject.Find("Frame").GetComponent<Transform>().rotation.eulerAngles;
+		Vector3 rot = frame.GetComponent<Transform>().rotation.eulerAngles;
 		pitch = rot.x;
 		yaw = rot.y;
 		roll = rot.z;
