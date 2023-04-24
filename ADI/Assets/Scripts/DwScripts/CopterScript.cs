@@ -21,8 +21,8 @@ public class CopterScript : MonoBehaviour
 	//каждому углу свой регулятор, класс PID определен ниже
 	//константы подобраны на глаз :) пробуйте свои значения
 	private PID pitchPID = new PID(-100, 0, -20);
-	private PID rollPID = new PID(0, 0, 0);
-	private PID yawPID = new PID(0, 0, 0);
+	private PID rollPID = new PID(100, 0, 20);
+	private PID yawPID = new PID(-50, 0, -50);
 
 	public GameObject motor;
 	public GameObject motor1;
