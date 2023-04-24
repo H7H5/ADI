@@ -18,14 +18,13 @@ public class ControlCopter : MonoBehaviour
 
     private void Start()
     {
-        power = motorScript.power;
+        //power = motorScript.power;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("UpArrow key was pressed.");
             power += powerStep;
             if(power > powerMax)
             {
@@ -37,9 +36,8 @@ public class ControlCopter : MonoBehaviour
             motorScript3.power = power;
         }
 
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("DownArrow key was released.");
             power -= powerStep;
             if(power < powerMin)
             {
@@ -49,6 +47,24 @@ public class ControlCopter : MonoBehaviour
             motorScript1.power = power;
             motorScript2.power = power;
             motorScript3.power = power;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            motorScript.power += powerStep;
+            motorScript1.power += powerStep;
+
+            motorScript2.power -= powerStep;
+            motorScript3.power -= powerStep;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            motorScript.power -= powerStep;
+            motorScript1.power -= powerStep;
+
+            motorScript2.power += powerStep;
+            motorScript3.power += powerStep;
         }
     }
 }
