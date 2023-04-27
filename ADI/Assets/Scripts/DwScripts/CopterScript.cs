@@ -24,10 +24,10 @@ public class CopterScript : MonoBehaviour
 	private PID rollPID = new PID(100, 0, 20);
 	private PID yawPID = new PID(-50, 0, -50);
 
-	public GameObject motor;
 	public GameObject motor1;
 	public GameObject motor2;
 	public GameObject motor3;
+	public GameObject motor4;
 
 	public GameObject frame;
 
@@ -104,10 +104,10 @@ public class CopterScript : MonoBehaviour
 		motor3power += yawForce;
 		motor4power += -yawForce;
 
-		motor.GetComponent<MotorScript>().power = (float)motor1power;
-		motor1.GetComponent<MotorScript>().power = (float)motor2power;
-		motor2.GetComponent<MotorScript>().power = (float)motor3power;
-		motor3.GetComponent<MotorScript>().power = (float)motor4power;
+		motor1.GetComponent<MotorScript>().power = (float)motor1power;
+		motor2.GetComponent<MotorScript>().power = (float)motor2power;
+		motor3.GetComponent<MotorScript>().power = (float)motor3power;
+		motor4.GetComponent<MotorScript>().power = (float)motor4power;
 	}
 
 	//как советуют в доке по Unity вычисления проводим в FixedUpdate, а не в Update
