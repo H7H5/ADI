@@ -8,6 +8,7 @@ public class Gorizont : MonoBehaviour
     public RawImage image;
     public RawImage image2;
     public RawImage image3;
+    public ParametersCopter parametersCopter;
     public Text textAzimuth;
     public float moveSpeed = 10f;
     public float rotateSpeed = 100f;
@@ -22,6 +23,9 @@ public class Gorizont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        roll = parametersCopter.roll;
+        pitch = parametersCopter.pitch;
+        azimuth = parametersCopter.yaw;
         float rotateInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float azimut = Input.GetAxis("Rotate");
@@ -50,7 +54,7 @@ public class Gorizont : MonoBehaviour
             {
                 pitch = 320;
             }
-            currentPitch = Map(pitch, 320, 360, 91,0);
+            currentPitch = Map(pitch, 320, 360, 860f, 0);
         }
         else
         {
@@ -58,7 +62,7 @@ public class Gorizont : MonoBehaviour
             {
                 pitch = 40;
             }
-            currentPitch = Map(pitch, 0, 40, 0, -91);
+            currentPitch = Map(pitch, 0, 40, 0, -850f);
         }
     }
 
